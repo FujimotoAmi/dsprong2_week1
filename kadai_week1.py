@@ -32,6 +32,13 @@ class ExtraActionButton(CalcButton):
         self.color = ft.colors.BLACK
 
 
+class TuikaActionButton(CalcButton):
+    def __init__(self, text, button_clicked):
+        CalcButton.__init__(self, text, button_clicked)
+        self.bgcolor = ft.colors.BLACK
+        self.color = ft.colors.WHITE
+
+
 class CalculatorApp(ft.Container):
     # application's root control (i.e. "view") containing all other controls
     def __init__(self):
