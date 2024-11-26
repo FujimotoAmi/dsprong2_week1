@@ -75,6 +75,7 @@ class CalculatorApp(ft.Container):
                 ),
                 ft.Row(
                     controls=[
+                        TuikaActionButton(text="tan",button_clicked=self.button_clicked),
                         DigitButton(text="4", button_clicked=self.button_clicked),
                         DigitButton(text="5", button_clicked=self.button_clicked),
                         DigitButton(text="6", button_clicked=self.button_clicked),
@@ -144,6 +145,10 @@ class CalculatorApp(ft.Container):
                 self.result.value = str(
                     self.format_number(abs(float(self.result.value)))
                 )
+
+        elif data in ("tan"):
+            self.result.value = math.tan(float(self.result.value))
+            self.reset()
 
         self.update()
 
