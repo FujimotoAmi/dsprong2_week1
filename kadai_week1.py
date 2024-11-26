@@ -67,6 +67,7 @@ class CalculatorApp(ft.Container):
                 ),
                 ft.Row(
                     controls=[
+                        TuikaActionButton(text="cos",button_clicked=self.button_clicked),
                         DigitButton(text="7", button_clicked=self.button_clicked),
                         DigitButton(text="8", button_clicked=self.button_clicked),
                         DigitButton(text="9", button_clicked=self.button_clicked),
@@ -144,6 +145,10 @@ class CalculatorApp(ft.Container):
                 self.result.value = str(
                     self.format_number(abs(float(self.result.value)))
                 )
+
+        elif data in ("cos"):
+            self.result.value = math.cos(float(self.result.value))
+            self.reset()
 
         self.update()
 
