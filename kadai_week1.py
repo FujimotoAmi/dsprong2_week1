@@ -1,4 +1,5 @@
 import flet as ft
+import math
 
 
 class CalcButton(ft.ElevatedButton):
