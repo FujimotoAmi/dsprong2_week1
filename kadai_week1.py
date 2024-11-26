@@ -91,9 +91,8 @@ class CalculatorApp(ft.Container):
                 ),
                 ft.Row(
                     controls=[
-                        DigitButton(
-                            text="0", expand=2, button_clicked=self.button_clicked
-                        ),
+                        TuikaActionButton(text="exp",button_clicked=self.button_clicked),
+                        DigitButton(text="0", expand=2, button_clicked=self.button_clicked),
                         DigitButton(text=".", button_clicked=self.button_clicked),
                         ActionButton(text="=", button_clicked=self.button_clicked),
                     ]
@@ -144,6 +143,10 @@ class CalculatorApp(ft.Container):
                 self.result.value = str(
                     self.format_number(abs(float(self.result.value)))
                 )
+
+        elif data in ("exp"):
+            self.result.value = math.exp(float(self.result.value))
+            self.reset()
 
         self.update()
 
