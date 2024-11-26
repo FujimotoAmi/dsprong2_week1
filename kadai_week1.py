@@ -55,12 +55,9 @@ class CalculatorApp(ft.Container):
                 ft.Row(controls=[self.result], alignment="end"),
                 ft.Row(
                     controls=[
-                        ExtraActionButton(
-                            text="AC", button_clicked=self.button_clicked
-                        ),
-                        ExtraActionButton(
-                            text="+/-", button_clicked=self.button_clicked
-                        ),
+                        TuikaActionButton(text="sin",button_clicked=self.button_clicked), 
+                        ExtraActionButton(text="AC", button_clicked=self.button_clicked),
+                        ExtraActionButton(text="+/-", button_clicked=self.button_clicked),
                         ExtraActionButton(text="%", button_clicked=self.button_clicked),
                         ActionButton(text="/", button_clicked=self.button_clicked),
                     ]
@@ -116,9 +113,7 @@ class CalculatorApp(ft.Container):
                 self.result.value = self.result.value + data
 
         elif data in ("+", "-", "*", "/"):
-            self.result.value = self.calculate(
-                self.operand1, float(self.result.value), self.operator
-            )
+            self.result.value = self.calculate(self.operand1, float(self.result.value), self.operator)
             self.operator = data
             if self.result.value == "Error":
                 self.operand1 = "0"
@@ -127,9 +122,7 @@ class CalculatorApp(ft.Container):
             self.new_operand = True
 
         elif data in ("="):
-            self.result.value = self.calculate(
-                self.operand1, float(self.result.value), self.operator
-            )
+            self.result.value = self.calculate(self.operand1, float(self.result.value), self.operator)
             self.reset()
 
         elif data in ("%"):
@@ -141,9 +134,11 @@ class CalculatorApp(ft.Container):
                 self.result.value = "-" + str(self.result.value)
 
             elif float(self.result.value) < 0:
-                self.result.value = str(
-                    self.format_number(abs(float(self.result.value)))
-                )
+                self.result.value = str(self.format_number(abs(float(self.result.value))))
+
+        elif data in ("sin"):
+            self.result.value = math.sin(float(self.result.value))
+            self.reset()
 
         self.update()
 
